@@ -34,5 +34,5 @@ Average time = <b>0.6s</b> over 1000 random solvable 4x4 boards.
     ```
 3. Run the game:
     ```bash
-    python main.py
+    $ python main.py
     ```
