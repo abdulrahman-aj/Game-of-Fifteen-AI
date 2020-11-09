@@ -3,8 +3,8 @@ Game of Fifteen using Pygame + AI.
 
 The implementation of the solver is done in C++, since solving a 4x4 Puzzle is computationally expensive.
 
-## How I solved it?
-Bidirectional Search with Heuristics.
+## How did I solve it?
+Using bidirectional search with heuristics.
 
 Heuristic: sum of Manhattan distances between tile positions and goal positions.
 
@@ -28,11 +28,15 @@ Average time = <b>0.6s</b> over 1000 random solvable 4x4 boards.
     ```bash
     $ git clone https://github.com/abdulrahman-aj/Game-of-Fifteen-AI
     ``` 
-2. Create Python C++ extension: 
+2. cd into repo directory:
+    ```bash
+    $ cd Game-of-Fifteen-AI
+    ```
+3. Create Python C++ extension: 
     ```bash
     $ python scripts/setup.py
     ```
-3. Run the game:
+4. Run the game:
     ```bash
     $ python main.py
     ```
