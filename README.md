@@ -10,7 +10,9 @@ Heuristic: sum of Manhattan distances between tile positions and goal positions.
 
 I also hashed the board into a 64-bit unsigned int.
 
-Although this method is much faster than A star, it does (not) guarantee shortest path, unlike A star.
+Although this method is much faster than A*, it does (not) guarantee shortest path, unlike A*.
+
+<img src="https://i.imgur.com/67V1jLX.gif" alt="game demo">
 
 ## Performance:
 Average time = <b>0.6s</b> over 1000 random solvable 4x4 boards.
@@ -24,11 +26,11 @@ Average time = <b>0.6s</b> over 1000 random solvable 4x4 boards.
 - g++ or msvc.
 
 ## Instructions:
-1. Clone the repository:
+1. Clone the repo:
     ```bash
     $ git clone https://github.com/abdulrahman-aj/Game-of-Fifteen-AI
     ``` 
-2. cd into repo directory:
+2. cd into the repo directory:
     ```bash
     $ cd Game-of-Fifteen-AI
     ```
