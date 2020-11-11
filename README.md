@@ -12,7 +12,7 @@ I also hashed the board into a 64-bit unsigned int.
 
 Although this method is much faster than A*, it does (not) guarantee shortest path, unlike A*.
 
-<img src="https://i.imgur.com/67V1jLX.gif" alt="game demo">
+<img src="https://i.imgur.com/rV7Kc8N.gif" alt="game demo">
 
 ## Performance:
 Average time = <b>0.6s</b> over 1000 random solvable 4x4 boards.
