@@ -1,44 +1,54 @@
 # Game of Fifteen AI
-Game of Fifteen using Pygame + AI.
+Game of Fifteen + AI solver.
 
-The implementation of the solver is done in C++, since solving a 4x4 Puzzle is computationally expensive.
+Solver implementation is done in C++, since solving a 4x4 Puzzle is computationally expensive.
 
-## How did I solve it?
-Using bidirectional search with heuristics.
+## Method I used to solve:
+Bidirectional A*.
 
-Heuristic: sum of Manhattan distances between tile positions and goal positions.
+Heuristic: sum of Manhattan distances.
 
-I also hashed the board into a 64-bit unsigned int.
+Nodes (board states) in the search are hashed into a uint64.
 
-Although this method is much faster than A*, it does (not) guarantee shortest path, unlike A*.
+Although this method is quite faster than normal A*, it does (not) guarantee optimal solution, unlike A*.
 
 <img src="https://i.imgur.com/rV7Kc8N.gif" alt="game demo">
 
 ## Performance:
-Average time = <b>0.6s</b> over 1000 random solvable 4x4 boards.
+<b>0.6s</b> avg over 1000 random solvable 4x4 boards.
 
 ## Requirements:
-- Python 3.x.
-- Pygame: 
-    ```
-    pip install pygame
-    ```
-- g++ or msvc.
+- python 3.x.
+- gcc / clang / msvc.
 
 ## Instructions:
-1. Clone the repo:
+1. clone the repo:
     ```bash
-    $ git clone https://github.com/abdulrahman-aj/Game-of-Fifteen-AI
+    git clone https://github.com/abdulrahman-aj/Game-of-Fifteen-AI
     ``` 
 2. cd into the repo directory:
     ```bash
-    $ cd Game-of-Fifteen-AI
+    cd Game-of-Fifteen-AI
     ```
-3. Create Python C++ extension: 
+
+3. Install requirements:
     ```bash
-    $ python scripts/setup.py
+    pip install -r requirements.txt
     ```
-4. Run:
+
+4. Create Python C++ extension: 
+
+    using make:
     ```bash
-    $ python main.py
+    make
+    ```
+    
+    or manually
+    ```bash
+    python scripts/setup.py
+    ```
+
+5. Run:
+    ```bash
+    python main.py
     ```
