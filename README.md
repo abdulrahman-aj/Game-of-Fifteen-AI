@@ -43,7 +43,7 @@ Although this method is quite faster than normal A*, it does (not) guarantee opt
     make
     ```
     
-    or manually
+    or manually:
     ```bash
     python scripts/setup.py
     ```
