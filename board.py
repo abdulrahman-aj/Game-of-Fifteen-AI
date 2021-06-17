@@ -1,8 +1,8 @@
-from ext.fifteen_solver import get_solvable
 from constants import *
 from random import shuffle
 from tile import Tile
 import pygame
+import random
 
 class Board:
     BORDER          = 15
@@ -14,6 +14,29 @@ class Board:
     X               = (WIDTH - LENGTH) // 2 - 110
     Y               = HEIGHT - LENGTH - BOTTOM_OFFSET
 
+    @staticmethod
+    def solvable(n, p):
+        inv = 0
+        for i in range(n * n):
+            for j in range(i + 1, n * n):
+                if p[i] and p[j] and p[i] > p[j]:
+                    inv += 1
+    
+        if n % 2 == 1:
+            return inv % 2 == 0
+        else:
+            row = p.index(0) // n
+            return row % 2 != inv % 2
+
+    @staticmethod
+    def get_solvable(n):
+        board = [i for i in range(n * n)]
+        for i in range(10):
+            random.shuffle(board)
+        while not Board.solvable(n, board):
+            random.shuffle(board)
+        return board
+
     def __init__(self, N, font):
         self.N = N
 
@@ -23,8 +46,8 @@ class Board:
         shift = (Board.LENGTH - 2 * Board.BORDER - N * tile_length - (N - 1) * Board.SEP) // 2
 
         temp = []
-        for x in get_solvable(N).split():
-            temp.append(int(x) if x != "0" else None)
+        for x in Board.get_solvable(N):
+            temp.append(x if x != 0 else None)
 
         self.tiles = []
         for index, value in enumerate(temp):
