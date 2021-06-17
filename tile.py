@@ -14,6 +14,7 @@ class Tile:
         cls.length = length
 
     def __init__(self, x, y, value):
+        assert Tile.font != None and Tile.length != None
         self.x = x
         self.y = y
         self.value = value

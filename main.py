@@ -1,20 +1,24 @@
+#!/usr/bin/env python3
 from board import Board
 from constants import *
 from ext.fifteen_solver import solve
 import pygame
+import sys
 
 pygame.init()
+
+
+def pressed(prev_keys, current_keys, key_pressed):
+    """To avoid a single click affecting multiple frames."""
+    if not prev_keys:
+        return current_keys[key_pressed]
+
+    return not prev_keys[key_pressed] and current_keys[key_pressed]
 
 
 def main():
     screen = pygame.display.set_mode(SIZE)
     clock = pygame.time.Clock()
-
-    def pressed(prev, current, key):
-        """To avoid a single click affecting multiple frames."""
-        if not prev:
-            return current[key]
-        return not prev[key] and current[key]
 
     board = None
     prev_keys = None
@@ -27,7 +31,7 @@ def main():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                exit(0)
+                sys.exit(0)
 
         screen.fill(BLACK)
 
@@ -91,18 +95,18 @@ def main():
                         ai_moves += 1
             else:
                 # Player move
-                dir = None
+                direction = None
                 if pressed(prev_keys, current_keys, pygame.K_LEFT):
-                    dir = "r"
+                    direction = "r"
                 elif pressed(prev_keys, current_keys, pygame.K_RIGHT):
-                    dir = "l"
+                    direction = "l"
                 elif pressed(prev_keys, current_keys, pygame.K_UP):
-                    dir = "d"
+                    direction = "d"
                 elif pressed(prev_keys, current_keys, pygame.K_DOWN):
-                    dir = "u"
+                    direction = "u"
 
-                if dir:
-                    increment = board.apply_move(dir)
+                if direction:
+                    increment = board.apply_move(direction)
                     
                     if not game_over and increment:
                         player_moves += 1
@@ -110,7 +114,7 @@ def main():
                     if shortest_path == "":
                         shortest_path = None
                     elif shortest_path:
-                        if shortest_path[0] == dir:
+                        if shortest_path[0] == direction:
                             shortest_path = shortest_path[1:]
                         else:
                             shortest_path = None
